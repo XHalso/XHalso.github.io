@@ -1,8 +1,14 @@
 <?xml version="1.0" encoding="utf-8"?>
 <search>
   <entry>
-    <title><![CDATA[Hello World]]></title>
-    <url>%2F2018%2F04%2F16%2Fhello-world%2F</url>
-    <content type="text"><![CDATA[Welcome to Hexo! This is your very first post. Check documentation for more info. If you get any problems when using Hexo, you can find the answer in troubleshooting or you can ask me on GitHub. Quick StartCreate a new post1$ hexo new "My New Post" More info: Writing Run server1$ hexo server More info: Server Generate static files1$ hexo generate More info: Generating Deploy to remote sites1$ hexo deploy More info: Deployment]]></content>
+    <title><![CDATA[微信小程序 使用Promise封装wx.request]]></title>
+    <url>%2F2018%2F04%2F17%2F%E5%BE%AE%E4%BF%A1%E5%B0%8F%E7%A8%8B%E5%BA%8F-%E4%BD%BF%E7%94%A8Promise%E5%B0%81%E8%A3%85wx-request%2F</url>
+    <content type="text"><![CDATA[wx.request微信小程序原生的网络请求API wx.request({ url: &apos;test.php&apos;, //仅为示例，并非真实的接口地址 data: { x: &apos;&apos; , y: &apos;&apos; }, header: { &apos;content-type&apos;: &apos;application/json&apos; // 默认值 }, success: function(res) { console.log(res.data) } }) Promise使用Promise封装wx.request,在发起一个请求之前使用wx.showToast()，在接口调用结束的complete回调函数中使用wx.hideToast() const wxRequest = (params = {}, url) =&gt; { wx.showToast({ title: &apos;加载中...&apos;, icon: &apos;loading&apos;, duration: 5000 }) let data = params.query || {}; return new Promise((resolve, reject) =&gt; { wx.request({ url: url, method: params.method || &apos;GET&apos;, data: data, header: { &apos;Content-Type&apos;: &apos;application/json&apos; }, success: res=&gt; { if (res.data.status == &apos;success&apos;) { resolve(res.data) } else { reject(res.msg) } }, complete:()=&gt;{ wx.hideToast() }, error: e=&gt; { reject(e) } }) }) } module.exports = { wxRequest, } 如何使用编写一个项目的时候，最好把所有的API接口集合一个js文件中 const http = require(&quot;../utils/http.js&quot;) const baseUrl = &apos;http://127.0.0.1:8888/Wxxcx&apos; const getUnionId = (params) =&gt; http.wxRequest(params, `${baseUrl}/getWxUserInfo`) const getLatLng = (params) =&gt; http.wxRequest(params, `${baseUrl}/getStationList`) const getOil = (params) =&gt; http.wxRequest(params, `${baseUrl}/getOilGun`) module.exports = { getUnionId, getLatLng, getOil } 接着，在pages中对应页面的js文件中引入 const api = require(&apos;../../api/api.js&apos;) 在对应的生命周期函数中写入 api.getUnionId({ query: { code: app.globalData.code, iv: res.iv, encryptedData: res.encryptedData } }).then(res =&gt; { console.log(res) }).catch(err =&gt; { console.log(err) }) 参考资料1.微信小程序2.ECMAScript 6 入门]]></content>
+      <categories>
+        <category>微信小程序</category>
+      </categories>
+      <tags>
+        <tag>微信小程序</tag>
+      </tags>
   </entry>
 </search>

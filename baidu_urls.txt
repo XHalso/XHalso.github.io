@@ -1,1 +1,1 @@
-http://blog.ivanweb.cn/2018/04/16/hello-world/
+http://blog.ivanweb.cn/2018/04/17/微信小程序-使用Promise封装wx-request/

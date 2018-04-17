@@ -3,20 +3,25 @@
 
 
     
-    
-    
   <url>
-    <loc>http://blog.ivanweb.cn/2018/04/16/hello-world/</loc>
-    <lastmod>2018-04-16T01:43:08.370Z</lastmod>
+    <loc>http://blog.ivanweb.cn/2018/04/17/%E5%BE%AE%E4%BF%A1%E5%B0%8F%E7%A8%8B%E5%BA%8F-%E4%BD%BF%E7%94%A8Promise%E5%B0%81%E8%A3%85wx-request/</loc>
+    <lastmod>2018-04-17T16:30:33.467Z</lastmod>
     <data>
         <display>
-        <title>Hello World</title>
-        <pubTime>2018-04-16T01:43:08.370Z</pubTime>
+        <title>微信小程序 使用Promise封装wx.request</title>
+        <pubTime>2018-04-17T02:06:33.000Z</pubTime>
         
+        <tag>微信小程序</tag>
+         
          
            
+             
+              <breadCrumb title="微信小程序" url="http://blog.ivanweb.cn/categories/%E5%BE%AE%E4%BF%A1%E5%B0%8F%E7%A8%8B%E5%BA%8F/"/>
+          
         </display>
     </data>
     </url>
 
+    
+    
 </urlset>
