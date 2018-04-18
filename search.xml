@@ -2,7 +2,7 @@
 <search>
   <entry>
     <title><![CDATA[安装NPM registry管理工具--nrm]]></title>
-    <url>%2F%E5%AE%89%E8%A3%85NPM-registry%E7%AE%A1%E7%90%86%E5%B7%A5%E5%85%B7-nrm.html</url>
+    <url>%2F%E5%AE%89%E8%A3%85NPM-registry%E7%AE%A1%E7%90%86%E5%B7%A5%E5%85%B7-nrm%2F</url>
     <content type="text"><![CDATA[安装nrm开发的npm registry 管理工具 nrm, 能够查看和切换当前使用的registry。github 1$ npm install -g nrm 查看当前使用的NPM registry123456789$ nrm ls* npm ---- https://registry.npmjs.org/ cnpm --- http://r.cnpmjs.org/ taobao - https://registry.npm.taobao.org/ nj ----- https://registry.nodejitsu.com/ rednpm - http://registry.mirror.cqupt.edu.cn/ npmMirror https://skimdb.npmjs.com/registry/ edunpm - http://registry.enpmjs.org/ 切换NPM registry1$ nrm use cnpm]]></content>
       <categories>
         <category>Mac</category>
@@ -15,7 +15,7 @@
   </entry>
   <entry>
     <title><![CDATA[Mac 通过brew安装指定版本的node]]></title>
-    <url>%2FMac-%E9%80%9A%E8%BF%87brew%E5%AE%89%E8%A3%85%E6%8C%87%E5%AE%9A%E7%89%88%E6%9C%AC%E7%9A%84node.html</url>
+    <url>%2FMac-%E9%80%9A%E8%BF%87brew%E5%AE%89%E8%A3%85%E6%8C%87%E5%AE%9A%E7%89%88%E6%9C%AC%E7%9A%84node%2F</url>
     <content type="text"><![CDATA[安装NVM前提是安装了homebrew 1$ brew install nvm 在终端中输入以下命令 1$ vim ~/.zshrc 然后添加以下命令 12export NVM_DIR=&quot;$HOME/.nvm&quot;. &quot;/usr/local/opt/nvm/nvm.sh&quot; 最后推出vim，输入以下命令 1$ source ~/.zshrc 使用nvm安装指定版本的node1234567$ nvm ls-remote 查看 所有的node可用版本$ nvm install 8.9.4 下载你想要的版本,这里的8.9.4指的是node的版本$ nvm use 8.9.4 使用指定版本的node $ nvm alias default 8.9.4 每次启动终端都使用该版本的node 查看你的node和npm的版本123$ node -v$ npm -v 查看npm全局安装的modules(模块)1$ npm list --depth=0 -global]]></content>
       <categories>
         <category>Mac</category>
@@ -30,7 +30,7 @@
   </entry>
   <entry>
     <title><![CDATA[Mac 程序猿软件推荐一波]]></title>
-    <url>%2FMac-%E7%A8%8B%E5%BA%8F%E7%8C%BF%E8%BD%AF%E4%BB%B6%E6%8E%A8%E8%8D%90%E4%B8%80%E6%B3%A2.html</url>
+    <url>%2FMac-%E7%A8%8B%E5%BA%8F%E7%8C%BF%E8%BD%AF%E4%BB%B6%E6%8E%A8%E8%8D%90%E4%B8%80%E6%B3%A2%2F</url>
     <content type="text"><![CDATA[Web编程软件 WebStorm VS Code Sublime Text 使用过程中，我感觉WebStorm和VS Code所占用的内存差不多，但是个人认为还是WebStorm会更好一点，Sublime可以用来快速的查看代码,顺便安利一波使用命令开启VS Code和Sublime来打开项目 VS Code通过终端输入下面命令 1$ vim ~/.zshrc 在把下面命令加上 1234567alias code=&apos;/Applications/Visual\ Studio\ Code.app/Contents/Resources/app/bin/code&apos;alias subl=&quot;&apos;/Applications/Sublime Text.app/Contents/SharedSupport/bin/subl&apos;&quot;alias nano=&quot;subl&quot;export EDITOR=&quot;subl&quot; 代码版本控制可视化工具 svn: Cornerstone git: Sourcetree HomebrewmacOS 缺失的软件包管理器打开终端输入以下命令 1$ /usr/bin/ruby -e "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)" 其他开发利器 终端: iTerm Docker 软件快速切换: Alfred SSH: Termius 视频播放器: IINA FTP: FileZilla Mac清理软件: Dr. Cleaner]]></content>
       <categories>
         <category>Mac</category>
@@ -43,7 +43,7 @@
   </entry>
   <entry>
     <title><![CDATA[微信小程序 使用Promise封装wx.request]]></title>
-    <url>%2F%E5%BE%AE%E4%BF%A1%E5%B0%8F%E7%A8%8B%E5%BA%8F-%E4%BD%BF%E7%94%A8Promise%E5%B0%81%E8%A3%85wx-request.html</url>
+    <url>%2F%E5%BE%AE%E4%BF%A1%E5%B0%8F%E7%A8%8B%E5%BA%8F-%E4%BD%BF%E7%94%A8Promise%E5%B0%81%E8%A3%85wx-request%2F</url>
     <content type="text"><![CDATA[wx.request微信小程序原生的网络请求API 12345678910111213wx.request(&#123; url: 'test.php', //仅为示例，并非真实的接口地址 data: &#123; x: '' , y: '' &#125;, header: &#123; 'content-type': 'application/json' // 默认值 &#125;, success: function(res) &#123; console.log(res.data) &#125;&#125;) Promise使用Promise封装wx.request,在发起一个请求之前使用wx.showToast()，在接口调用结束的complete回调函数中使用wx.hideToast() 1234567891011121314151617181920212223242526272829303132const wxRequest = (params = &#123;&#125;, url) =&gt; &#123; wx.showToast(&#123; title: '加载中...', icon: 'loading', duration: 5000 &#125;) let data = params.query || &#123;&#125;; return new Promise((resolve, reject) =&gt; &#123; wx.request(&#123; url: url, method: params.method || 'GET', data: data, header: &#123; 'Content-Type': 'application/json' &#125;, success: res=&gt; &#123; if (res.data.status == 'success') &#123; resolve(res.data) &#125; else &#123; reject(res.msg) &#125; &#125;, complete:()=&gt;&#123; wx.hideToast() &#125;, error: e=&gt; &#123; reject(e) &#125; &#125;) &#125;)&#125;module.exports = &#123; wxRequest,&#125; 如何使用编写一个项目的时候，最好把所有的API接口集合一个js文件中 123456789101112const http = require("../utils/http.js")const baseUrl = 'http://127.0.0.1:8888/Wxxcx'const getUnionId = (params) =&gt; http.wxRequest(params, `$&#123;baseUrl&#125;/getWxUserInfo`)const getLatLng = (params) =&gt; http.wxRequest(params, `$&#123;baseUrl&#125;/getStationList`)const getOil = (params) =&gt; http.wxRequest(params, `$&#123;baseUrl&#125;/getOilGun`)module.exports = &#123; getUnionId, getLatLng, getOil&#125; 接着，在pages中对应页面的js文件中引入 1234567891011121314const api = require('../../api/api.js')在对应的生命周期函数中写入api.getUnionId(&#123; query: &#123; code: app.globalData.code, iv: res.iv, encryptedData: res.encryptedData &#125;&#125;).then(res =&gt; &#123; console.log(res)&#125;).catch(err =&gt; &#123; console.log(err)&#125;) 参考资料 微信小程序 ECMAScript 6 入门]]></content>
       <categories>
         <category>微信小程序</category>

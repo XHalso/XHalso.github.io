@@ -1,4 +1,4 @@
-http://blog.ivanweb.cn/安装NPM-registry管理工具-nrm.html
-http://blog.ivanweb.cn/Mac-通过brew安装指定版本的node.html
-http://blog.ivanweb.cn/Mac-程序猿软件推荐一波.html
-http://blog.ivanweb.cn/微信小程序-使用Promise封装wx-request.html
+http://blog.ivanweb.cn/安装NPM-registry管理工具-nrm/
+http://blog.ivanweb.cn/Mac-通过brew安装指定版本的node/
+http://blog.ivanweb.cn/Mac-程序猿软件推荐一波/
+http://blog.ivanweb.cn/微信小程序-使用Promise封装wx-request/
