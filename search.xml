@@ -1,14 +1,44 @@
 <?xml version="1.0" encoding="utf-8"?>
 <search>
   <entry>
-    <title><![CDATA[Mac 程序猿软件推荐一波]]></title>
-    <url>%2F2018%2F04%2F18%2FMac-%E7%A8%8B%E5%BA%8F%E7%8C%BF%E8%BD%AF%E4%BB%B6%E6%8E%A8%E8%8D%90%E4%B8%80%E6%B3%A2%2F</url>
-    <content type="text"><![CDATA[Web编程软件 WebStorm VS Code Sublime Text 使用过程中，我感觉WebStorm和VS Code所占用的内存差不多，但是个人认为还是WebStorm会更好一点，Sublime可以用来快速的查看代码,顺便安利一波使用命令开启VS Code和Sublime来打开项目 VS Code通过终端输入下面命令1vim ~/.zshrc 在把下面命令加上1234alias code='/Applications/Visual\ Studio\ Code.app/Contents/Resources/app/bin/code'alias subl="'/Applications/Sublime Text.app/Contents/SharedSupport/bin/subl'"alias nano="subl"export EDITOR="subl" 代码版本控制可视化工具 svn: Cornerstone git: Sourcetree HomebrewmacOS 缺失的软件包管理器打开终端输入以下命令1/usr/bin/ruby -e "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)" 其他开发利器 终端: iTerm Docker 软件快速切换: Alfred SSH: Termius 视频播放器: IINA FTP: FileZilla Mac清理软件: Dr. Cleaner]]></content>
+    <title><![CDATA[安装NPM registry管理工具--nrm]]></title>
+    <url>%2F2018%2F04%2F18%2F%E5%AE%89%E8%A3%85NPM-registry%E7%AE%A1%E7%90%86%E5%B7%A5%E5%85%B7-nrm%2F</url>
+    <content type="text"><![CDATA[安装nrm开发的npm registry 管理工具 nrm, 能够查看和切换当前使用的registry。github 1$ npm install -g nrm 查看当前使用的NPM registry123456789$ nrm ls* npm ---- https://registry.npmjs.org/ cnpm --- http://r.cnpmjs.org/ taobao - https://registry.npm.taobao.org/ nj ----- https://registry.nodejitsu.com/ rednpm - http://registry.mirror.cqupt.edu.cn/ npmMirror https://skimdb.npmjs.com/registry/ edunpm - http://registry.enpmjs.org/ 切换NPM registry1$ nrm use cnpm]]></content>
       <categories>
         <category>Mac</category>
+        <category>node</category>
       </categories>
       <tags>
         <tag>Mac</tag>
+        <tag>node</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title><![CDATA[Mac 通过brew安装指定版本的node]]></title>
+    <url>%2F2018%2F04%2F18%2FMac-%E9%80%9A%E8%BF%87brew%E5%AE%89%E8%A3%85%E6%8C%87%E5%AE%9A%E7%89%88%E6%9C%AC%E7%9A%84node%2F</url>
+    <content type="text"><![CDATA[安装NVM前提是安装了homebrew 1$ brew install nvm 在终端中输入以下命令 1$ vim ~/.zshrc 然后添加以下命令 12export NVM_DIR=&quot;$HOME/.nvm&quot;. &quot;/usr/local/opt/nvm/nvm.sh&quot; 最后推出vim，输入以下命令 1$ source ~/.zshrc 使用nvm安装指定版本的node1234567$ nvm ls-remote 查看 所有的node可用版本$ nvm install 8.9.4 下载你想要的版本,这里的8.9.4指的是node的版本$ nvm use 8.9.4 使用指定版本的node $ nvm alias default 8.9.4 每次启动终端都使用该版本的node 查看你的node和npm的版本123$ node -v$ npm -v 查看npm全局安装的modules(模块)1$ npm list --depth=0 -global]]></content>
+      <categories>
+        <category>Mac</category>
+        <category>Homebrew</category>
+        <category>node</category>
+      </categories>
+      <tags>
+        <tag>Mac</tag>
+        <tag>Homebrew</tag>
+        <tag>node</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title><![CDATA[Mac 程序猿软件推荐一波]]></title>
+    <url>%2F2018%2F04%2F18%2FMac-%E7%A8%8B%E5%BA%8F%E7%8C%BF%E8%BD%AF%E4%BB%B6%E6%8E%A8%E8%8D%90%E4%B8%80%E6%B3%A2%2F</url>
+    <content type="text"><![CDATA[Web编程软件 WebStorm VS Code Sublime Text 使用过程中，我感觉WebStorm和VS Code所占用的内存差不多，但是个人认为还是WebStorm会更好一点，Sublime可以用来快速的查看代码,顺便安利一波使用命令开启VS Code和Sublime来打开项目 VS Code通过终端输入下面命令 1$ vim ~/.zshrc 在把下面命令加上 1234567alias code=&apos;/Applications/Visual\ Studio\ Code.app/Contents/Resources/app/bin/code&apos;alias subl=&quot;&apos;/Applications/Sublime Text.app/Contents/SharedSupport/bin/subl&apos;&quot;alias nano=&quot;subl&quot;export EDITOR=&quot;subl&quot; 代码版本控制可视化工具 svn: Cornerstone git: Sourcetree HomebrewmacOS 缺失的软件包管理器打开终端输入以下命令 1$ /usr/bin/ruby -e "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)" 其他开发利器 终端: iTerm Docker 软件快速切换: Alfred SSH: Termius 视频播放器: IINA FTP: FileZilla Mac清理软件: Dr. Cleaner]]></content>
+      <categories>
+        <category>Mac</category>
+        <category>Homebrew</category>
+      </categories>
+      <tags>
+        <tag>Mac</tag>
+        <tag>Homebrew</tag>
       </tags>
   </entry>
   <entry>
