@@ -70,7 +70,7 @@
 
 
 
-  <meta name="keywords" content="Mac,Homebrew,node," />
+  <meta name="keywords" content="微信小程序," />
 
 
 
@@ -83,18 +83,18 @@
 
 
 
-<meta name="description" content="安装NVM前提是安装了homebrew 1$ brew install nvm 在终端中输入以下命令 1$ vim ~/.zshrc 然后添加以下命令 12export NVM_DIR=&amp;quot;$HOME/.nvm&amp;quot;. &amp;quot;/usr/local/opt/nvm/nvm.sh&amp;quot; 最后推出vim，输入以下命令 1$ source ~/.zshrc">
-<meta name="keywords" content="Mac,Homebrew,node">
+<meta name="description" content="wx.request微信小程序原生的网络请求API 12345678910111213wx.request(&amp;#123;  url: &apos;test.php&apos;, //仅为示例，并非真实的接口地址  data: &amp;#123;    x: &apos;&apos; ,    y: &apos;&apos;  &amp;#125;,  header: &amp;#123;    &apos;content-type&apos;: &apos;application/json&apos; // 默认值">
+<meta name="keywords" content="微信小程序">
 <meta property="og:type" content="article">
-<meta property="og:title" content="Mac 通过brew安装指定版本的node">
-<meta property="og:url" content="http://blog.ivanweb.cn/2018/04/18/Mac-通过brew安装指定版本的node/index.html">
+<meta property="og:title" content="微信小程序 使用Promise封装wx.request">
+<meta property="og:url" content="http://blog.ivanweb.cn/微信小程序-使用Promise封装wx-request.html">
 <meta property="og:site_name" content="XHalso&#39;s Blog">
-<meta property="og:description" content="安装NVM前提是安装了homebrew 1$ brew install nvm 在终端中输入以下命令 1$ vim ~/.zshrc 然后添加以下命令 12export NVM_DIR=&amp;quot;$HOME/.nvm&amp;quot;. &amp;quot;/usr/local/opt/nvm/nvm.sh&amp;quot; 最后推出vim，输入以下命令 1$ source ~/.zshrc">
+<meta property="og:description" content="wx.request微信小程序原生的网络请求API 12345678910111213wx.request(&amp;#123;  url: &apos;test.php&apos;, //仅为示例，并非真实的接口地址  data: &amp;#123;    x: &apos;&apos; ,    y: &apos;&apos;  &amp;#125;,  header: &amp;#123;    &apos;content-type&apos;: &apos;application/json&apos; // 默认值">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2018-04-18T15:01:51.235Z">
+<meta property="og:updated_time" content="2018-04-18T15:00:39.934Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="Mac 通过brew安装指定版本的node">
-<meta name="twitter:description" content="安装NVM前提是安装了homebrew 1$ brew install nvm 在终端中输入以下命令 1$ vim ~/.zshrc 然后添加以下命令 12export NVM_DIR=&amp;quot;$HOME/.nvm&amp;quot;. &amp;quot;/usr/local/opt/nvm/nvm.sh&amp;quot; 最后推出vim，输入以下命令 1$ source ~/.zshrc">
+<meta name="twitter:title" content="微信小程序 使用Promise封装wx.request">
+<meta name="twitter:description" content="wx.request微信小程序原生的网络请求API 12345678910111213wx.request(&amp;#123;  url: &apos;test.php&apos;, //仅为示例，并非真实的接口地址  data: &amp;#123;    x: &apos;&apos; ,    y: &apos;&apos;  &amp;#125;,  header: &amp;#123;    &apos;content-type&apos;: &apos;application/json&apos; // 默认值">
 
 
 
@@ -124,13 +124,13 @@
 
 
 
-  <link rel="canonical" href="http://blog.ivanweb.cn/2018/04/18/Mac-通过brew安装指定版本的node/"/>
+  <link rel="canonical" href="http://blog.ivanweb.cn/微信小程序-使用Promise封装wx-request.html"/>
 
 
 
 
 
-  <title>Mac 通过brew安装指定版本的node | XHalso's Blog</title>
+  <title>微信小程序 使用Promise封装wx.request | XHalso's Blog</title>
   
 
 
@@ -301,7 +301,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://blog.ivanweb.cn/2018/04/18/Mac-通过brew安装指定版本的node/">
+    <link itemprop="mainEntityOfPage" href="http://blog.ivanweb.cn/微信小程序-使用Promise封装wx-request.html">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="XHalso">
@@ -318,7 +318,7 @@
 
         
         
-          <h2 class="post-title" itemprop="name headline">Mac 通过brew安装指定版本的node</h2>
+          <h2 class="post-title" itemprop="name headline">微信小程序 使用Promise封装wx.request</h2>
         
 
         <div class="post-meta">
@@ -330,8 +330,8 @@
               
                 <span class="post-meta-item-text">发表于</span>
               
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-04-18T18:35:22+08:00">
-                2018-04-18
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-04-17T10:06:33+08:00">
+                2018-04-17
               </time>
             
 
@@ -353,30 +353,8 @@
               
               
                 <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/Mac/" itemprop="url" rel="index">
-                    <span itemprop="name">Mac</span>
-                  </a>
-                </span>
-
-                
-                
-                  ， 
-                
-              
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/Mac/Homebrew/" itemprop="url" rel="index">
-                    <span itemprop="name">Homebrew</span>
-                  </a>
-                </span>
-
-                
-                
-                  ， 
-                
-              
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/Mac/Homebrew/node/" itemprop="url" rel="index">
-                    <span itemprop="name">node</span>
+                  <a href="/categories/微信小程序/" itemprop="url" rel="index">
+                    <span itemprop="name">微信小程序</span>
                   </a>
                 </span>
 
@@ -392,7 +370,7 @@
 
           
           
-             <span id="/2018/04/18/Mac-通过brew安装指定版本的node/" class="leancloud_visitors" data-flag-title="Mac 通过brew安装指定版本的node">
+             <span id="/微信小程序-使用Promise封装wx-request.html" class="leancloud_visitors" data-flag-title="微信小程序 使用Promise封装wx.request">
                <span class="post-meta-divider">|</span>
                <span class="post-meta-item-icon">
                  <i class="fa fa-eye"></i>
@@ -423,18 +401,19 @@
       
 
       
-        <h2 id="安装NVM"><a href="#安装NVM" class="headerlink" title="安装NVM"></a>安装<a href="https://github.com/creationix/nvm" target="_blank" rel="noopener">NVM</a></h2><p>前提是安装了homebrew</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ brew install nvm</span><br></pre></td></tr></table></figure>
-<p>在终端中输入以下命令</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ vim ~/.zshrc</span><br></pre></td></tr></table></figure>
-<p>然后添加以下命令</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">export NVM_DIR=&quot;$HOME/.nvm&quot;</span><br><span class="line">. &quot;/usr/local/opt/nvm/nvm.sh&quot;</span><br></pre></td></tr></table></figure>
-<p>最后推出vim，输入以下命令</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ <span class="built_in">source</span> ~/.zshrc</span><br></pre></td></tr></table></figure>
+        <h2 id="wx-request"><a href="#wx-request" class="headerlink" title="wx.request"></a>wx.request</h2><p>微信小程序原生的网络请求API</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line">wx.request(&#123;</span><br><span class="line">  url: <span class="string">'test.php'</span>, <span class="comment">//仅为示例，并非真实的接口地址</span></span><br><span class="line">  data: &#123;</span><br><span class="line">    x: <span class="string">''</span> ,</span><br><span class="line">    y: <span class="string">''</span></span><br><span class="line">  &#125;,</span><br><span class="line">  header: &#123;</span><br><span class="line">    <span class="string">'content-type'</span>: <span class="string">'application/json'</span> <span class="comment">// 默认值</span></span><br><span class="line">  &#125;,</span><br><span class="line">  success: <span class="function"><span class="keyword">function</span>(<span class="params">res</span>) </span>&#123;</span><br><span class="line">    <span class="built_in">console</span>.log(res.data)</span><br><span class="line">  &#125;</span><br><span class="line">&#125;)</span><br></pre></td></tr></table></figure>
 <a id="more"></a>
-<h2 id="使用nvm安装指定版本的node"><a href="#使用nvm安装指定版本的node" class="headerlink" title="使用nvm安装指定版本的node"></a>使用nvm安装指定版本的node</h2><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">$ nvm ls-remote 查看 所有的node可用版本</span><br><span class="line"></span><br><span class="line">$ nvm install 8.9.4 下载你想要的版本,这里的8.9.4指的是node的版本</span><br><span class="line"></span><br><span class="line">$ nvm use 8.9.4 使用指定版本的node </span><br><span class="line"></span><br><span class="line">$ nvm <span class="built_in">alias</span> default 8.9.4 每次启动终端都使用该版本的node</span><br></pre></td></tr></table></figure>
-<h2 id="查看你的node和npm的版本"><a href="#查看你的node和npm的版本" class="headerlink" title="查看你的node和npm的版本"></a>查看你的node和npm的版本</h2><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">$ node -v</span><br><span class="line"></span><br><span class="line">$ npm -v</span><br></pre></td></tr></table></figure>
-<h2 id="查看npm全局安装的modules-模块"><a href="#查看npm全局安装的modules-模块" class="headerlink" title="查看npm全局安装的modules(模块)"></a>查看npm全局安装的modules(模块)</h2><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ npm list --depth=0 -global</span><br></pre></td></tr></table></figure>
+<h2 id="Promise"><a href="#Promise" class="headerlink" title="Promise"></a>Promise</h2><p>使用Promise封装wx.request,在发起一个请求之前使用wx.showToast()，在接口调用结束的complete回调函数中使用wx.hideToast()</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> wxRequest = <span class="function">(<span class="params">params = &#123;&#125;, url</span>) =&gt;</span> &#123;</span><br><span class="line">  wx.showToast(&#123;</span><br><span class="line">    title: <span class="string">'加载中...'</span>,</span><br><span class="line">    icon: <span class="string">'loading'</span>,</span><br><span class="line">    duration: <span class="number">5000</span></span><br><span class="line">  &#125;)</span><br><span class="line">  <span class="keyword">let</span> data = params.query || &#123;&#125;;</span><br><span class="line">  <span class="keyword">return</span> <span class="keyword">new</span> <span class="built_in">Promise</span>(<span class="function">(<span class="params">resolve, reject</span>) =&gt;</span> &#123;</span><br><span class="line">    wx.request(&#123;</span><br><span class="line">      url: url,</span><br><span class="line">      method: params.method || <span class="string">'GET'</span>,</span><br><span class="line">      data: data,</span><br><span class="line">      header: &#123; <span class="string">'Content-Type'</span>: <span class="string">'application/json'</span> &#125;,</span><br><span class="line">      success: <span class="function"><span class="params">res</span>=&gt;</span> &#123;</span><br><span class="line">        <span class="keyword">if</span> (res.data.status == <span class="string">'success'</span>) &#123;</span><br><span class="line">          resolve(res.data)</span><br><span class="line">        &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">          reject(res.msg)</span><br><span class="line">        &#125;</span><br><span class="line">      &#125;,</span><br><span class="line">      complete:<span class="function"><span class="params">()</span>=&gt;</span>&#123;</span><br><span class="line">        wx.hideToast()</span><br><span class="line">      &#125;,</span><br><span class="line">      error: <span class="function"><span class="params">e</span>=&gt;</span> &#123;</span><br><span class="line">        reject(e)</span><br><span class="line">      &#125;</span><br><span class="line">    &#125;)</span><br><span class="line">  &#125;)</span><br><span class="line">&#125;</span><br><span class="line"><span class="built_in">module</span>.exports = &#123;</span><br><span class="line">  wxRequest,</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h2 id="如何使用"><a href="#如何使用" class="headerlink" title="如何使用"></a>如何使用</h2><p>编写一个项目的时候，最好把所有的API接口集合一个js文件中</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> http = <span class="built_in">require</span>(<span class="string">"../utils/http.js"</span>)</span><br><span class="line"><span class="keyword">const</span> baseUrl = <span class="string">'http://127.0.0.1:8888/Wxxcx'</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">const</span> getUnionId = <span class="function">(<span class="params">params</span>) =&gt;</span> http.wxRequest(params, <span class="string">`<span class="subst">$&#123;baseUrl&#125;</span>/getWxUserInfo`</span>)</span><br><span class="line"><span class="keyword">const</span> getLatLng = <span class="function">(<span class="params">params</span>) =&gt;</span> http.wxRequest(params, <span class="string">`<span class="subst">$&#123;baseUrl&#125;</span>/getStationList`</span>)</span><br><span class="line"><span class="keyword">const</span> getOil = <span class="function">(<span class="params">params</span>) =&gt;</span> http.wxRequest(params, <span class="string">`<span class="subst">$&#123;baseUrl&#125;</span>/getOilGun`</span>)</span><br><span class="line"></span><br><span class="line"><span class="built_in">module</span>.exports = &#123;</span><br><span class="line">  getUnionId,</span><br><span class="line">  getLatLng,</span><br><span class="line">  getOil</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>接着，在pages中对应页面的js文件中引入</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> api = <span class="built_in">require</span>(<span class="string">'../../api/api.js'</span>)</span><br><span class="line">在对应的生命周期函数中写入</span><br><span class="line"></span><br><span class="line">api.getUnionId(&#123;</span><br><span class="line">  query: &#123;</span><br><span class="line">    code: app.globalData.code,</span><br><span class="line">    iv: res.iv,</span><br><span class="line">    encryptedData: res.encryptedData</span><br><span class="line">  &#125;</span><br><span class="line">&#125;).then(<span class="function"><span class="params">res</span> =&gt;</span> &#123;</span><br><span class="line">  <span class="built_in">console</span>.log(res)</span><br><span class="line">&#125;).catch(<span class="function"><span class="params">err</span> =&gt;</span> &#123;</span><br><span class="line">  <span class="built_in">console</span>.log(err)</span><br><span class="line">&#125;)</span><br></pre></td></tr></table></figure>
+<h2 id="参考资料"><a href="#参考资料" class="headerlink" title="参考资料"></a>参考资料</h2><ol>
+<li><a href="https://developers.weixin.qq.com/miniprogram/dev/api/" target="_blank" rel="noopener">微信小程序</a></li>
+<li><a href="http://es6.ruanyifeng.com/#docs/promise" target="_blank" rel="noopener">ECMAScript 6 入门</a></li>
+</ol>
 
       
     </div>
@@ -452,11 +431,7 @@
       
         <div class="post-tags">
           
-            <a href="/tags/Mac/" rel="tag"># Mac</a>
-          
-            <a href="/tags/Homebrew/" rel="tag"># Homebrew</a>
-          
-            <a href="/tags/node/" rel="tag"># node</a>
+            <a href="/tags/微信小程序/" rel="tag"># 微信小程序</a>
           
         </div>
       
@@ -469,18 +444,14 @@
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/2018/04/18/Mac-程序猿软件推荐一波/" rel="next" title="Mac 程序猿软件推荐一波">
-                <i class="fa fa-chevron-left"></i> Mac 程序猿软件推荐一波
-              </a>
-            
           </div>
 
           <span class="post-nav-divider"></span>
 
           <div class="post-nav-prev post-nav-item">
             
-              <a href="/2018/04/18/安装NPM-registry管理工具-nrm/" rel="prev" title="安装NPM registry管理工具--nrm">
-                安装NPM registry管理工具--nrm <i class="fa fa-chevron-right"></i>
+              <a href="/Mac-程序猿软件推荐一波.html" rel="prev" title="Mac 程序猿软件推荐一波">
+                Mac 程序猿软件推荐一波 <i class="fa fa-chevron-right"></i>
               </a>
             
           </div>
@@ -639,7 +610,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#安装NVM"><span class="nav-number">1.</span> <span class="nav-text">安装NVM</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#使用nvm安装指定版本的node"><span class="nav-number">2.</span> <span class="nav-text">使用nvm安装指定版本的node</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#查看你的node和npm的版本"><span class="nav-number">3.</span> <span class="nav-text">查看你的node和npm的版本</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#查看npm全局安装的modules-模块"><span class="nav-number">4.</span> <span class="nav-text">查看npm全局安装的modules(模块)</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#wx-request"><span class="nav-number">1.</span> <span class="nav-text">wx.request</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Promise"><span class="nav-number">2.</span> <span class="nav-text">Promise</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#如何使用"><span class="nav-number">3.</span> <span class="nav-text">如何使用</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#参考资料"><span class="nav-number">4.</span> <span class="nav-text">参考资料</span></a></li></ol></div>
             
 
           </div>
@@ -1283,6 +1254,21 @@
   
 
   
+<script>
+(function(){
+    var bp = document.createElement('script');
+    var curProtocol = window.location.protocol.split(':')[0];
+    if (curProtocol === 'https') {
+        bp.src = 'https://zz.bdstatic.com/linksubmit/push.js';        
+    }
+    else {
+        bp.src = 'http://push.zhanzhang.baidu.com/push.js';
+    }
+    var s = document.getElementsByTagName("script")[0];
+    s.parentNode.insertBefore(bp, s);
+})();
+</script>
+
 
   
   
