@@ -1,6 +1,17 @@
 <?xml version="1.0" encoding="utf-8"?>
 <search>
   <entry>
+    <title><![CDATA[vue项目中常见的坑]]></title>
+    <url>%2F2018%2F05%2F03%2Fvue%E9%A1%B9%E7%9B%AE%E4%B8%AD%E5%B8%B8%E8%A7%81%E7%9A%84%E5%9D%91%2F</url>
+    <content type="text"><![CDATA[本地运行跨域问题通过webpack-dev-server的proxy来解决api接口请求跨域的问题，在dev的index.js文件中，设置proxy 123456789proxyTable: &#123; '/api': &#123; target: 'http://baidu.com/', changeOrigin: true, pathRewrite: &#123; '^/api': '/' &#125; &#125;&#125;, 在axios的中设置 1axios.defaults.baseURL = "/api"; vue操作DOM在created()钩子函数执行的时候进行的DOM操作，发现并未进行任何渲染，在查看Vue官方文档中，发现可以在Vue生命周期的created()钩子函数中通过在Vue.nextTick()的回调函数中进行的DOM操作，或者在mounted钩子函数直接进行DOM操作 element uiTable在element ui的table中，如果想去修改某一行的数据，如果直接将它复制给data对象里的一个属性，当修改某个字段时，会发现table里对应某行字段的数据也会发生改变，产生的原因时一个objec引用类型共享一个内存区域的，所以我们就不能直接连等复制，需要重新指向一个新的引用 12345//赋值对象是一个objectthis.objData=Object.assign(&#123;&#125;, row) //赋值对象是一个arraynewArray = oldArray.slice() el-table-column中格式化数据，可以通过formatter属性来绑定一个方法去写格式化数据，或者vue的计算属性computed 在每个el-table-column中通过设置min-width来适应不同大小的屏幕 input在el-input中通过添加.native 修饰符来触发input的原生事件 1&lt;el-input @click.native=&quot;handlenClick&quot;&gt;Click Me&lt;/el-input&gt; 修改element样式可以通过新建一个样式文件，在mian.js里引入 mint uiMessage box在用户的反馈中，ios8.1.2的微信浏览器中会出现提示框出现偏离的状况，修复问题中发现.mint-msgbox的样式中transform: translate3d(-50%,-50%,0);没有起作用，通过引入全局样式 1234567.mint-msgbox&#123; max-width: 84%; top: 35%; left: 8%; -webkit-transform: translate3d(0, 0, 0); transform: translate3d(0, 0, 0);&#125; 微信JSSDK签名出错在vue-router的对象实例中设置了mode: ‘history’，会在使用this.$router.push跳转需要调用微信JSSDK的页面中，会签名出错，解决的方式有 1234//方案一通过location.href来跳转需要调用微信JSSDK的页面//方案二vue-router使用hash模式 在真机上进行调试通过在main.js引入vConsole.js来查看api接口请求的数据]]></content>
+      <categories>
+        <category>vue</category>
+      </categories>
+      <tags>
+        <tag>vue</tag>
+      </tags>
+  </entry>
+  <entry>
     <title><![CDATA[安装NPM registry管理工具--nrm]]></title>
     <url>%2F2018%2F04%2F18%2F%E5%AE%89%E8%A3%85NPM-registry%E7%AE%A1%E7%90%86%E5%B7%A5%E5%85%B7-nrm%2F</url>
     <content type="text"><![CDATA[安装nrm开发的npm registry 管理工具 nrm, 能够查看和切换当前使用的registry。github 1$ npm install -g nrm 查看当前使用的NPM registry123456789$ nrm ls* npm ---- https://registry.npmjs.org/ cnpm --- http://r.cnpmjs.org/ taobao - https://registry.npm.taobao.org/ nj ----- https://registry.nodejitsu.com/ rednpm - http://registry.mirror.cqupt.edu.cn/ npmMirror https://skimdb.npmjs.com/registry/ edunpm - http://registry.enpmjs.org/ 切换NPM registry1$ nrm use cnpm]]></content>
