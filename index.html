@@ -403,26 +403,17 @@
 
       
         
-          
-            <h4 id="本地运行跨域问题"><a href="#本地运行跨域问题" class="headerlink" title="本地运行跨域问题"></a>本地运行跨域问题</h4><p>通过webpack-dev-server的proxy来解决api接口请求跨域的问题，在dev的index.js文件中，设置proxy</p>
+          <h4 id="本地运行跨域问题"><a href="#本地运行跨域问题" class="headerlink" title="本地运行跨域问题"></a>本地运行跨域问题</h4><p>通过webpack-dev-server的proxy来解决api接口请求跨域的问题，在dev的index.js文件中，设置proxy</p>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">proxyTable: &#123;</span><br><span class="line">  <span class="string">'/api'</span>: &#123;</span><br><span class="line">    target: <span class="string">'http://baidu.com/'</span>,</span><br><span class="line">    changeOrigin: <span class="literal">true</span>,</span><br><span class="line">    pathRewrite: &#123;</span><br><span class="line">      <span class="string">'^/api'</span>: <span class="string">'/'</span></span><br><span class="line">    &#125;</span><br><span class="line">  &#125;</span><br><span class="line">&#125;,</span><br></pre></td></tr></table></figure>
 <p>在axios的中设置</p>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">axios.defaults.baseURL = <span class="string">"/api"</span>;</span><br></pre></td></tr></table></figure>
-<h4 id="vue"><a href="#vue" class="headerlink" title="vue"></a>vue</h4><h6 id="操作DOM"><a href="#操作DOM" class="headerlink" title="操作DOM"></a>操作DOM</h6><p>在created()钩子函数执行的时候进行的DOM操作，发现并未进行任何渲染，在查看Vue官方文档中，发现可以在Vue生命周期的created()钩子函数中通过在Vue.nextTick()的回调函数中进行的DOM操作，或者在mounted钩子函数直接进行DOM操作</p>
-<h4 id="element-ui"><a href="#element-ui" class="headerlink" title="element ui"></a>element ui</h4><h6 id="Table"><a href="#Table" class="headerlink" title="Table"></a>Table</h6><p>在element ui的table中，如果想去修改某一行的数据，如果直接将它复制给data对象里的一个属性，当修改某个字段时，会发现table里对应某行字段的数据也会发生改变，产生的原因时一个objec引用类型共享一个内存区域的，所以我们就不能直接连等复制，需要重新指向一个新的引用</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">//赋值对象是一个object</span><br><span class="line">this.objData=Object.assign(&#123;&#125;, row) </span><br><span class="line"></span><br><span class="line">//赋值对象是一个array</span><br><span class="line">newArray = oldArray.slice()</span><br></pre></td></tr></table></figure>
-<p>el-table-column中格式化数据，可以通过formatter属性来绑定一个方法去写格式化数据，或者vue的计算属性computed</p>
-<p>在每个el-table-column中通过设置min-width来适应不同大小的屏幕</p>
-<h6 id="input"><a href="#input" class="headerlink" title="input"></a>input</h6><p>在el-input中通过添加.native 修饰符来触发input的原生事件</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&lt;el-input @click.native=&quot;handlenClick&quot;&gt;Click Me&lt;/el-input&gt;</span><br></pre></td></tr></table></figure>
-<h6 id="修改element样式"><a href="#修改element样式" class="headerlink" title="修改element样式"></a>修改element样式</h6><p>可以通过新建一个样式文件，在mian.js里引入</p>
-<h4 id="mint-ui"><a href="#mint-ui" class="headerlink" title="mint ui"></a>mint ui</h4><h6 id="Message-box"><a href="#Message-box" class="headerlink" title="Message box"></a>Message box</h6><p>在用户的反馈中，ios8.1.2的微信浏览器中会出现提示框出现偏离的状况，修复问题中发现.mint-msgbox的样式中transform: translate3d(-50%,-50%,0);没有起作用，通过引入全局样式</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">.mint-msgbox&#123;</span><br><span class="line">  max-width: 84%;</span><br><span class="line">  top: 35%;</span><br><span class="line">  left: 8%;</span><br><span class="line">  -webkit-transform: translate3d(0, 0, 0);</span><br><span class="line">  transform: translate3d(0, 0, 0);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<h6 id="微信JSSDK签名出错"><a href="#微信JSSDK签名出错" class="headerlink" title="微信JSSDK签名出错"></a>微信JSSDK签名出错</h6><p>在vue-router的对象实例中设置了mode: ‘history’，会在使用this.$router.push跳转需要调用微信JSSDK的页面中，会签名出错，解决的方式有</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">//方案一</span><br><span class="line">通过location.href来跳转需要调用微信JSSDK的页面</span><br><span class="line">//方案二</span><br><span class="line">vue-router使用hash模式</span><br></pre></td></tr></table></figure>
-<h6 id="在真机上进行调试"><a href="#在真机上进行调试" class="headerlink" title="在真机上进行调试"></a>在真机上进行调试</h6><p>通过在main.js引入vConsole.js来查看api接口请求的数据</p>
-
-          
+          <!--noindex-->
+          <div class="post-button text-center">
+            <a class="btn" href="/2018/05/03/vue项目中常见的坑/#more" rel="contents">
+              阅读全文 &raquo;
+            </a>
+          </div>
+          <!--/noindex-->
         
       
     </div>

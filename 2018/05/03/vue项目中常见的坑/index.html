@@ -91,7 +91,7 @@
 <meta property="og:site_name" content="XHalso&#39;s Blog">
 <meta property="og:description" content="本地运行跨域问题通过webpack-dev-server的proxy来解决api接口请求跨域的问题，在dev的index.js文件中，设置proxy 123456789proxyTable: &amp;#123;  &apos;/api&apos;: &amp;#123;    target: &apos;http://baidu.com/&apos;,    changeOrigin: true,    pathRewrite: &amp;#123;">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2018-05-03T10:26:04.568Z">
+<meta property="og:updated_time" content="2018-05-03T10:27:28.840Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="vue项目中常见的坑">
 <meta name="twitter:description" content="本地运行跨域问题通过webpack-dev-server的proxy来解决api接口请求跨域的问题，在dev的index.js文件中，设置proxy 123456789proxyTable: &amp;#123;  &apos;/api&apos;: &amp;#123;    target: &apos;http://baidu.com/&apos;,    changeOrigin: true,    pathRewrite: &amp;#123;">
@@ -405,6 +405,7 @@
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">proxyTable: &#123;</span><br><span class="line">  <span class="string">'/api'</span>: &#123;</span><br><span class="line">    target: <span class="string">'http://baidu.com/'</span>,</span><br><span class="line">    changeOrigin: <span class="literal">true</span>,</span><br><span class="line">    pathRewrite: &#123;</span><br><span class="line">      <span class="string">'^/api'</span>: <span class="string">'/'</span></span><br><span class="line">    &#125;</span><br><span class="line">  &#125;</span><br><span class="line">&#125;,</span><br></pre></td></tr></table></figure>
 <p>在axios的中设置</p>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">axios.defaults.baseURL = <span class="string">"/api"</span>;</span><br></pre></td></tr></table></figure>
+<a id="more"></a>
 <h4 id="vue"><a href="#vue" class="headerlink" title="vue"></a>vue</h4><h6 id="操作DOM"><a href="#操作DOM" class="headerlink" title="操作DOM"></a>操作DOM</h6><p>在created()钩子函数执行的时候进行的DOM操作，发现并未进行任何渲染，在查看Vue官方文档中，发现可以在Vue生命周期的created()钩子函数中通过在Vue.nextTick()的回调函数中进行的DOM操作，或者在mounted钩子函数直接进行DOM操作</p>
 <h4 id="element-ui"><a href="#element-ui" class="headerlink" title="element ui"></a>element ui</h4><h6 id="Table"><a href="#Table" class="headerlink" title="Table"></a>Table</h6><p>在element ui的table中，如果想去修改某一行的数据，如果直接将它复制给data对象里的一个属性，当修改某个字段时，会发现table里对应某行字段的数据也会发生改变，产生的原因时一个objec引用类型共享一个内存区域的，所以我们就不能直接连等复制，需要重新指向一个新的引用</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">//赋值对象是一个object</span><br><span class="line">this.objData=Object.assign(&#123;&#125;, row) </span><br><span class="line"></span><br><span class="line">//赋值对象是一个array</span><br><span class="line">newArray = oldArray.slice()</span><br></pre></td></tr></table></figure>
