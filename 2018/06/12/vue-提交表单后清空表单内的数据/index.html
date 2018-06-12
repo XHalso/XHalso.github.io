@@ -83,19 +83,19 @@
 
 
 
-<meta name="description" content="应用场景在使用vue的框架中，常常出现提交完表单之后，data对象中表单的字段的数据还是存在的，做重复表单提交的过程中不是很友好，如果两个表单中存在公用的组件（组件C），如果这个表单（表单A）的数据没有清空，再跳转到另外一个表单（表单B）的时候，表单A上的组件C上的数据会出现到表单B的组件C上。 解决方式参考vue的API文档，发现我们可以通过$options获取初始化的data对象，在表单提交成">
+<meta name="description" content="应用场景在使用vue的框架中，常常出现提交完表单之后，data对象中表单的字段的数据还是存在的，做重复表单提交的过程中不是很友好，如果两个表单中存在公用的组件（组件C），如果这个表单（表单A）的数据没有清空，再跳转到另外一个表单（表单B）的时候，表单A上的组件C上的数据会出现到表单B的组件C上。 解决方式参考vue的API文档，">
 <meta name="keywords" content="vue">
 <meta property="og:type" content="article">
 <meta property="og:title" content="vue 提交表单后清空表单内的数据">
 <meta property="og:url" content="http://blog.ivanweb.cn/2018/06/12/vue-提交表单后清空表单内的数据/index.html">
 <meta property="og:site_name" content="XHalso&#39;s Blog">
-<meta property="og:description" content="应用场景在使用vue的框架中，常常出现提交完表单之后，data对象中表单的字段的数据还是存在的，做重复表单提交的过程中不是很友好，如果两个表单中存在公用的组件（组件C），如果这个表单（表单A）的数据没有清空，再跳转到另外一个表单（表单B）的时候，表单A上的组件C上的数据会出现到表单B的组件C上。 解决方式参考vue的API文档，发现我们可以通过$options获取初始化的data对象，在表单提交成">
+<meta property="og:description" content="应用场景在使用vue的框架中，常常出现提交完表单之后，data对象中表单的字段的数据还是存在的，做重复表单提交的过程中不是很友好，如果两个表单中存在公用的组件（组件C），如果这个表单（表单A）的数据没有清空，再跳转到另外一个表单（表单B）的时候，表单A上的组件C上的数据会出现到表单B的组件C上。 解决方式参考vue的API文档，">
 <meta property="og:locale" content="zh-Hans">
 <meta property="og:image" content="http://blog.ivanweb.cn/images/WX20180612-160019@2x-min.png">
-<meta property="og:updated_time" content="2018-06-12T08:55:56.561Z">
+<meta property="og:updated_time" content="2018-06-12T08:57:36.682Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="vue 提交表单后清空表单内的数据">
-<meta name="twitter:description" content="应用场景在使用vue的框架中，常常出现提交完表单之后，data对象中表单的字段的数据还是存在的，做重复表单提交的过程中不是很友好，如果两个表单中存在公用的组件（组件C），如果这个表单（表单A）的数据没有清空，再跳转到另外一个表单（表单B）的时候，表单A上的组件C上的数据会出现到表单B的组件C上。 解决方式参考vue的API文档，发现我们可以通过$options获取初始化的data对象，在表单提交成">
+<meta name="twitter:description" content="应用场景在使用vue的框架中，常常出现提交完表单之后，data对象中表单的字段的数据还是存在的，做重复表单提交的过程中不是很友好，如果两个表单中存在公用的组件（组件C），如果这个表单（表单A）的数据没有清空，再跳转到另外一个表单（表单B）的时候，表单A上的组件C上的数据会出现到表单B的组件C上。 解决方式参考vue的API文档，">
 <meta name="twitter:image" content="http://blog.ivanweb.cn/images/WX20180612-160019@2x-min.png">
 
 
@@ -404,7 +404,7 @@
 
       
         <h4 id="应用场景"><a href="#应用场景" class="headerlink" title="应用场景"></a>应用场景</h4><p>在使用vue的框架中，常常出现提交完表单之后，data对象中表单的字段的数据还是存在的，做重复表单提交的过程中不是很友好，如果两个表单中存在公用的组件（组件C），如果这个表单（表单A）的数据没有清空，再跳转到另外一个表单（表单B）的时候，表单A上的组件C上的数据会出现到表单B的组件C上。</p>
-<h4 id="解决方式"><a href="#解决方式" class="headerlink" title="解决方式"></a>解决方式</h4><p>参考vue的API文档，<br><img src="/images/WX20180612-160019@2x-min.png" alt=""><br>发现我们可以通过$options获取初始化的data对象，在表单提交成功之后或者在vue生命周期的beforeDestroy、destroyed中可以通过</p>
+<h4 id="解决方式"><a href="#解决方式" class="headerlink" title="解决方式"></a>解决方式</h4><p>参考vue的API文档，<br><img src="/images/WX20180612-160019@2x-min.png" alt=""><br><a id="more"></a><br>发现我们可以通过$options获取初始化的data对象，在表单提交成功之后或者在vue生命周期的beforeDestroy、destroyed中可以通过</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">this.form=Object.assign(&#123;&#125;,this.$options.data().form)</span><br></pre></td></tr></table></figure>
 <p>来初始化data对象的form字段。<br>具体代码如下：<br><iframe scrolling="no" width="100%" height="570" src="//jsfiddle.net/XHalso/Lhr0p5vt/embedded/js,html,css,result/dark" frameborder="0" allowfullscreen></iframe></p>
 
