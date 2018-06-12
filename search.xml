@@ -1,6 +1,17 @@
 <?xml version="1.0" encoding="utf-8"?>
 <search>
   <entry>
+    <title><![CDATA[vue 提交表单后清空表单内的数据]]></title>
+    <url>%2F2018%2F06%2F12%2Fvue-%E6%8F%90%E4%BA%A4%E8%A1%A8%E5%8D%95%E5%90%8E%E6%B8%85%E7%A9%BA%E8%A1%A8%E5%8D%95%E5%86%85%E7%9A%84%E6%95%B0%E6%8D%AE%2F</url>
+    <content type="text"><![CDATA[应用场景在使用vue的框架中，常常出现提交完表单之后，data对象中表单的字段的数据还是存在的，做重复表单提交的过程中不是很友好，如果两个表单中存在公用的组件（组件C），如果这个表单（表单A）的数据没有清空，再跳转到另外一个表单（表单B）的时候，表单A上的组件C上的数据会出现到表单B的组件C上。 解决方式参考vue的API文档，发现我们可以通过$options获取初始化的data对象，在表单提交成功之后或者在vue生命周期的beforeDestroy、destroyed中可以通过 1this.form=Object.assign(&#123;&#125;,this.$options.data().form) 来初始化data对象的form字段。具体代码如下：]]></content>
+      <categories>
+        <category>vue</category>
+      </categories>
+      <tags>
+        <tag>vue</tag>
+      </tags>
+  </entry>
+  <entry>
     <title><![CDATA[vue项目中常见的坑]]></title>
     <url>%2F2018%2F05%2F03%2Fvue%E9%A1%B9%E7%9B%AE%E4%B8%AD%E5%B8%B8%E8%A7%81%E7%9A%84%E5%9D%91%2F</url>
     <content type="text"><![CDATA[本地运行跨域问题通过webpack-dev-server的proxy来解决api接口请求跨域的问题，在dev的index.js文件中，设置proxy 123456789proxyTable: &#123; '/api': &#123; target: 'http://baidu.com/', changeOrigin: true, pathRewrite: &#123; '^/api': '/' &#125; &#125;&#125;, 在axios的中设置 1axios.defaults.baseURL = "/api"; vue操作DOM在created()钩子函数执行的时候进行的DOM操作，发现并未进行任何渲染，在查看Vue官方文档中，发现可以在Vue生命周期的created()钩子函数中通过在Vue.nextTick()的回调函数中进行的DOM操作，或者在mounted钩子函数直接进行DOM操作 element uiTable在element ui的table中，如果想去修改某一行的数据，如果直接将它复制给data对象里的一个属性，当修改某个字段时，会发现table里对应某行字段的数据也会发生改变，产生的原因时一个objec引用类型共享一个内存区域的，所以我们就不能直接连等复制，需要重新指向一个新的引用 1234567891011//赋值对象是一个objectthis.objData=Object.assign(&#123;&#125;, row)或this.objData=&#123;...row&#125;//赋值对象是一个arraynewArray = oldArray.slice()或newArray = oldArray.concat()或newArray = [...oldArray] el-table-column中格式化数据，可以通过formatter属性来绑定一个方法去写格式化数据，或者vue的计算属性computed 在每个el-table-column中通过设置min-width来适应不同大小的屏幕 input在el-input中通过添加.native 修饰符来触发input的原生事件 1&lt;el-input @click.native=&quot;handlenClick&quot;&gt;Click Me&lt;/el-input&gt; 修改element样式可以通过新建一个样式文件，在mian.js里引入 mint uiMessage box在用户的反馈中，ios8.1.2的微信浏览器中会出现提示框出现偏离的状况，修复问题中发现.mint-msgbox的样式中transform: translate3d(-50%,-50%,0);没有起作用，通过引入全局样式 1234567.mint-msgbox&#123; max-width: 84%; top: 35%; left: 8%; -webkit-transform: translate3d(0, 0, 0); transform: translate3d(0, 0, 0);&#125; 微信JSSDK签名出错在vue-router的对象实例中设置了mode: ‘history’，会在使用this.$router.push跳转需要调用微信JSSDK的页面中，会签名出错，解决的方式有 1234//方案一通过location.href来跳转需要调用微信JSSDK的页面//方案二vue-router使用hash模式 在真机上进行调试通过在main.js引入vConsole.js来查看api接口请求的数据]]></content>
