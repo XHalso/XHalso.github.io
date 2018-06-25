@@ -1,6 +1,17 @@
 <?xml version="1.0" encoding="utf-8"?>
 <search>
   <entry>
+    <title><![CDATA[浏览器的多个选项卡中共享sessionStorage]]></title>
+    <url>%2F2018%2F06%2F22%2F%E6%B5%8F%E8%A7%88%E5%99%A8%E7%9A%84%E5%A4%9A%E4%B8%AA%E9%80%89%E9%A1%B9%E5%8D%A1%E4%B8%AD%E5%85%B1%E4%BA%ABsessionStorage%2F</url>
+    <content type="text"><![CDATA[原文：Sharing sessionStorage between tabs for secure multi-tab authentication 使用场景在web项目中，当用户重开一个标签页的时候，需要重新登录。造成这种情况的是登录的标识符存取在session中，标签页之间没有共享session数据。 解决方式发现国外开发者解决的方式是监听storage事件，利用localStorage事件来跨标签页共享sessionStorage。在线例子 123456789101112131415161718192021222324252627282930313233343536// Removed IE support in this demo for the sake of simplicity// 移除对IE浏览器的支持(function () &#123; if (!sessionStorage.length) &#123; // Ask other tabs for session storage // 新开的标签页触发这个事件 localStorage.setItem(&apos;getSessionStorage&apos;, Date.now()); &#125;; window.addEventListener(&apos;storage&apos;, function (event) &#123; //console.log(&apos;storage event&apos;, event); if (event.key == &apos;getSessionStorage&apos;) &#123; // Some tab asked for the sessionStorage -&gt; send it // 已存在的标签页会接收到这个事件 localStorage.setItem(&apos;sessionStorage&apos;, JSON.stringify(sessionStorage)); localStorage.removeItem(&apos;sessionStorage&apos;); &#125; else if (event.key == &apos;sessionStorage&apos; &amp;&amp; !sessionStorage.length) &#123; // sessionStorage is empty -&gt; fill it // 新开启的标签页会收到这个事件 var data = JSON.parse(event.newValue), value; for (key in data) &#123; sessionStorage.setItem(key, data[key]); &#125; showSessionStorage(); &#125; &#125;);]]></content>
+      <categories>
+        <category>javascript</category>
+      </categories>
+      <tags>
+        <tag>javascript</tag>
+      </tags>
+  </entry>
+  <entry>
     <title><![CDATA[vue 提交表单后清空表单内的数据]]></title>
     <url>%2F2018%2F06%2F12%2Fvue-%E6%8F%90%E4%BA%A4%E8%A1%A8%E5%8D%95%E5%90%8E%E6%B8%85%E7%A9%BA%E8%A1%A8%E5%8D%95%E5%86%85%E7%9A%84%E6%95%B0%E6%8D%AE%2F</url>
     <content type="text"><![CDATA[应用场景在使用vue的框架中，常常出现提交完表单之后，data对象中表单的字段的数据还是存在的，做重复表单提交的过程中不是很友好，如果两个表单中存在公用的组件（组件C），如果这个表单（表单A）的数据没有清空，再跳转到另外一个表单（表单B）的时候，表单A上的组件C上的数据会出现到表单B的组件C上。 解决方式参考vue的API文档，发现我们可以通过$options获取初始化的data对象，在表单提交成功之后或者在vue生命周期的beforeDestroy、destroyed中可以通过 1this.form=Object.assign(&#123;&#125;,this.$options.data().form) 来初始化data对象的form字段。具体代码如下：]]></content>
