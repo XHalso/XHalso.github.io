@@ -1,3 +1,6 @@
+http://blog.ivanweb.cn/2019/05/08/客户端使用七牛云上传文件/
+http://blog.ivanweb.cn/2019/05/08/nestjs使用配置文件连接数据库/
+http://blog.ivanweb.cn/2019/05/08/微信小程序-音频和背景音频的无缝切换播放/
 http://blog.ivanweb.cn/2018/08/02/javascript中浅拷贝和深拷贝/
 http://blog.ivanweb.cn/2018/06/22/浏览器的多个选项卡中共享sessionStorage/
 http://blog.ivanweb.cn/2018/06/12/vue-提交表单后清空表单内的数据/
@@ -5,4 +8,5 @@ http://blog.ivanweb.cn/2018/05/03/vue项目中常见的坑/
 http://blog.ivanweb.cn/2018/04/18/安装NPM-registry管理工具-nrm/
 http://blog.ivanweb.cn/2018/04/18/Mac-通过brew安装指定版本的node/
 http://blog.ivanweb.cn/2018/04/18/Mac-程序猿软件推荐一波/
+http://blog.ivanweb.cn/2018/04/17/微信小程序-使用Promise封装API/
 http://blog.ivanweb.cn/2018/04/17/微信小程序-使用Promise封装wx-request/

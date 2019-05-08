@@ -300,6 +300,475 @@
   
   
   <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://blog.ivanweb.cn/2019/05/08/客户端使用七牛云上传文件/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="XHalso">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="http://thirdwx.qlogo.cn/mmopen/jflIqVvOpR5Lf2OFLvmDuB6ibPFNnaoPwx9PlsFwaC4QW5uR1xlOx03T8MMXypD9icdzpMyBNAibgrib2aEGOKDheGR13G9ckybE/132">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="XHalso's Blog">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2019/05/08/客户端使用七牛云上传文件/" itemprop="url">客户端使用七牛云上传文件</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2019-05-08T17:34:47+08:00">
+                2019-05-08
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/node/" itemprop="url" rel="index">
+                    <span itemprop="name">node</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+             <span id="/2019/05/08/客户端使用七牛云上传文件/" class="leancloud_visitors" data-flag-title="客户端使用七牛云上传文件">
+               <span class="post-meta-divider">|</span>
+               <span class="post-meta-item-icon">
+                 <i class="fa fa-eye"></i>
+               </span>
+               
+                 <span class="post-meta-item-text">阅读次数&#58;</span>
+               
+                 <span class="leancloud-visitors-count"></span>
+             </span>
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <h2 id="客户端上传文件"><a href="#客户端上传文件" class="headerlink" title="客户端上传文件"></a>客户端上传文件</h2><p>首先从后台后去七牛云的token,这里使用node来获取token</p>
+<figure class="highlight ts"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> getUploadToken = <span class="function"><span class="params">()</span> =&gt;</span> &#123;</span><br><span class="line">  <span class="keyword">const</span> accessKey = <span class="string">'accessKey'</span>;</span><br><span class="line">  <span class="keyword">const</span> secretKey = <span class="string">'secretKey'</span>;</span><br><span class="line">  <span class="keyword">const</span> bucket = <span class="string">"bucket"</span>;  <span class="comment">//存储空间名称</span></span><br><span class="line">  <span class="keyword">const</span> mac = <span class="keyword">new</span> qiniu.auth.digest.Mac(accessKey, secretKey);</span><br><span class="line">  <span class="keyword">const</span> options = &#123;</span><br><span class="line">    scope: bucket</span><br><span class="line">  &#125;</span><br><span class="line">  <span class="keyword">const</span> putPolicy = <span class="keyword">new</span> qiniu.rs.PutPolicy(options);</span><br><span class="line">  <span class="keyword">const</span> uploadToken = putPolicy.uploadToken(mac);</span><br><span class="line">  <span class="keyword">return</span> uploadToken;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>接着再浏览器请求接口获取七牛云token，进行文件上传<br><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br></pre></td><td class="code"><pre><span class="line">&lt;!--使用的vue+elementUI--&gt;</span><br><span class="line">qiniuUpload() &#123;</span><br><span class="line">  <span class="keyword">this</span>.axios.get(<span class="string">"/api/work/getQiniuToken"</span>).then(<span class="function"><span class="params">res</span> =&gt;</span> &#123;</span><br><span class="line">    <span class="keyword">let</span> token = res.token;</span><br><span class="line">    <span class="keyword">let</span> config = &#123;</span><br><span class="line">      useCdnDomain: <span class="literal">true</span>,</span><br><span class="line">      region: qiniu.region.z1</span><br><span class="line">    &#125;;</span><br><span class="line">    <span class="keyword">let</span> putExtra = &#123;</span><br><span class="line">      fname: <span class="string">""</span>,</span><br><span class="line">      params: &#123;&#125;,</span><br><span class="line">      mimeType: <span class="literal">null</span></span><br><span class="line">    &#125;;</span><br><span class="line">    <span class="keyword">let</span> file = <span class="keyword">this</span>.form.audio[<span class="number">0</span>].raw;</span><br><span class="line">    <span class="keyword">let</span> key = dayjs().format(<span class="string">"YYYYMMDDHHmmssSSS"</span>) + <span class="string">".mp3"</span>;</span><br><span class="line">    <span class="keyword">let</span> observable = qiniu.upload(file, key, token, putExtra, config);</span><br><span class="line">    <span class="keyword">let</span> that = <span class="keyword">this</span>;</span><br><span class="line">    <span class="keyword">let</span> observer = &#123;</span><br><span class="line">      next: <span class="function"><span class="params">res</span> =&gt;</span> &#123;</span><br><span class="line">        <span class="built_in">console</span>.log(res);</span><br><span class="line">      &#125;,</span><br><span class="line">      error: <span class="function"><span class="params">err</span> =&gt;</span> &#123;</span><br><span class="line">        <span class="built_in">console</span>.log(err);</span><br><span class="line">      &#125;,</span><br><span class="line">      complete: <span class="function"><span class="params">res</span> =&gt;</span> &#123;</span><br><span class="line">        that.submitForm(res.key);</span><br><span class="line">      &#125;</span><br><span class="line">    &#125;;</span><br><span class="line">    <span class="keyword">let</span> subscription = observable.subscribe(observer);</span><br><span class="line">  &#125;);</span><br><span class="line">&#125;,</span><br></pre></td></tr></table></figure></p>
+
+          
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://blog.ivanweb.cn/2019/05/08/nestjs使用配置文件连接数据库/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="XHalso">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="http://thirdwx.qlogo.cn/mmopen/jflIqVvOpR5Lf2OFLvmDuB6ibPFNnaoPwx9PlsFwaC4QW5uR1xlOx03T8MMXypD9icdzpMyBNAibgrib2aEGOKDheGR13G9ckybE/132">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="XHalso's Blog">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2019/05/08/nestjs使用配置文件连接数据库/" itemprop="url">nestjs使用配置文件连接数据库</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2019-05-08T17:19:03+08:00">
+                2019-05-08
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/node/" itemprop="url" rel="index">
+                    <span itemprop="name">node</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+             <span id="/2019/05/08/nestjs使用配置文件连接数据库/" class="leancloud_visitors" data-flag-title="nestjs使用配置文件连接数据库">
+               <span class="post-meta-divider">|</span>
+               <span class="post-meta-item-icon">
+                 <i class="fa fa-eye"></i>
+               </span>
+               
+                 <span class="post-meta-item-text">阅读次数&#58;</span>
+               
+                 <span class="leancloud-visitors-count"></span>
+             </span>
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <h2 id="安装"><a href="#安装" class="headerlink" title="安装"></a>安装</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">$ npm i --save dotenv</span><br><span class="line">$ npm i --save-dev @types/dotenv</span><br></pre></td></tr></table></figure>
+<h2 id="创建一个-env文件"><a href="#创建一个-env文件" class="headerlink" title="创建一个.env文件"></a>创建一个.env文件</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">DB_HOST=localhost</span><br><span class="line">DB_PORT=3306</span><br><span class="line">DB_USETNAME=root</span><br><span class="line">DB_PASSWORD=123456</span><br><span class="line">DB_DATABASE=test</span><br><span class="line">DB_SYNC=true</span><br></pre></td></tr></table></figure>
+<h2 id="全局引入"><a href="#全局引入" class="headerlink" title="全局引入"></a>全局引入</h2><figure class="highlight ts"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">&lt;!--main.ts--&gt;</span><br><span class="line"><span class="keyword">import</span> <span class="string">'dotenv/config'</span></span><br></pre></td></tr></table></figure>
+<h2 id="连接数据库"><a href="#连接数据库" class="headerlink" title="连接数据库"></a>连接数据库</h2><figure class="highlight ts"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line">&lt;!--app.moudle.ts--&gt;</span><br><span class="line"><span class="meta">@Module</span>(&#123;</span><br><span class="line">  imports: [</span><br><span class="line">    TypeOrmModule.forRoot(&#123;</span><br><span class="line">      <span class="keyword">type</span>: <span class="string">'mysql'</span>,</span><br><span class="line">      host: process.env.DB_HOST,</span><br><span class="line">      port: <span class="built_in">parseInt</span>(process.env.DB_PORT),</span><br><span class="line">      username: process.env.DB_USETNAME,</span><br><span class="line">      password: process.env.DB_PASSWORD,</span><br><span class="line">      database: process.env.DB_DATABASE,</span><br><span class="line">      entities: [__dirname + <span class="string">'/**/*.entity&#123;.ts,.js&#125;'</span>],</span><br><span class="line">      synchronize: process.env.DB_SYNC==<span class="string">'true'</span>?<span class="literal">true</span>:<span class="literal">false</span>,</span><br><span class="line">      logging: <span class="literal">true</span></span><br><span class="line">    &#125;),</span><br><span class="line">  ],</span><br><span class="line">  ...</span><br><span class="line">&#125;)</span><br></pre></td></tr></table></figure>
+          
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://blog.ivanweb.cn/2019/05/08/微信小程序-音频和背景音频的无缝切换播放/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="XHalso">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="http://thirdwx.qlogo.cn/mmopen/jflIqVvOpR5Lf2OFLvmDuB6ibPFNnaoPwx9PlsFwaC4QW5uR1xlOx03T8MMXypD9icdzpMyBNAibgrib2aEGOKDheGR13G9ckybE/132">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="XHalso's Blog">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2019/05/08/微信小程序-音频和背景音频的无缝切换播放/" itemprop="url">微信小程序 音频和背景音频的无缝切换播放</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2019-05-08T16:46:27+08:00">
+                2019-05-08
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/微信小程序/" itemprop="url" rel="index">
+                    <span itemprop="name">微信小程序</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+             <span id="/2019/05/08/微信小程序-音频和背景音频的无缝切换播放/" class="leancloud_visitors" data-flag-title="微信小程序 音频和背景音频的无缝切换播放">
+               <span class="post-meta-divider">|</span>
+               <span class="post-meta-item-icon">
+                 <i class="fa fa-eye"></i>
+               </span>
+               
+                 <span class="post-meta-item-text">阅读次数&#58;</span>
+               
+                 <span class="leancloud-visitors-count"></span>
+             </span>
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          <h2 id="音频播放"><a href="#音频播放" class="headerlink" title="音频播放"></a>音频播放</h2><p>微信小程序目前建议要使用音频的功能，推荐使用通过wx.createInnerAudioContext()创建内部 audio 上下文 InnerAudioContext 对象。</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br></pre></td><td class="code"><pre><span class="line">&lt;!--seek：跳转的位置，auto: 是否自动播放--&gt;</span><br><span class="line">handleAudio(seek=<span class="number">0</span>,auto=<span class="literal">true</span>)&#123;</span><br><span class="line">    <span class="keyword">const</span> that=<span class="keyword">this</span></span><br><span class="line">    <span class="keyword">this</span>.setData(&#123;</span><br><span class="line">      innerAudioContext: wx.createInnerAudioContext()</span><br><span class="line">    &#125;)</span><br><span class="line">    <span class="keyword">this</span>.data.innerAudioContext.seek(seek)</span><br><span class="line">    &lt;!--这里的url指的是音频的地址--&gt;</span><br><span class="line">    <span class="keyword">this</span>.data.innerAudioContext.src = url</span><br><span class="line">    <span class="keyword">if</span>(auto)&#123;</span><br><span class="line">      <span class="keyword">this</span>.data.innerAudioContext.autoplay = <span class="literal">true</span></span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">this</span>.data.innerAudioContext.onPlay(<span class="function"><span class="params">()</span> =&gt;</span> &#123;</span><br><span class="line">      <span class="built_in">console</span>.log(<span class="string">'开始播放'</span>)</span><br><span class="line">    &#125;)</span><br><span class="line">    <span class="keyword">this</span>.data.innerAudioContext.onTimeUpdate(<span class="function"><span class="params">()</span>=&gt;</span>&#123;</span><br><span class="line">      &lt;!--持续更新已播放的进度--&gt;</span><br><span class="line">      that.setData(&#123;</span><br><span class="line">        currentTime: that.formatTime(that.data.innerAudioContext.currentTime)</span><br><span class="line">      &#125;)</span><br><span class="line">    &#125;)</span><br><span class="line">    <span class="keyword">this</span>.data.innerAudioContext.onError(<span class="function">(<span class="params">res</span>) =&gt;</span> &#123;</span><br><span class="line">      <span class="built_in">console</span>.log(res.errMsg)</span><br><span class="line">      <span class="built_in">console</span>.log(res.errCode)</span><br><span class="line">    &#125;)</span><br><span class="line">  &#125;</span><br></pre></td></tr></table></figure>
+<p>接着在页面生命周期onReady里使用wx.request的success里去调用handleAudio函数。<br>
+          <!--noindex-->
+          <div class="post-button text-center">
+            <a class="btn" href="/2019/05/08/微信小程序-音频和背景音频的无缝切换播放/#more" rel="contents">
+              阅读全文 &raquo;
+            </a>
+          </div>
+          <!--/noindex-->
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
     <link itemprop="mainEntityOfPage" href="http://blog.ivanweb.cn/2018/08/02/javascript中浅拷贝和深拷贝/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -1461,167 +1930,13 @@
 
 
     
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://blog.ivanweb.cn/2018/04/17/微信小程序-使用Promise封装wx-request/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="XHalso">
-      <meta itemprop="description" content="">
-      <meta itemprop="image" content="http://thirdwx.qlogo.cn/mmopen/jflIqVvOpR5Lf2OFLvmDuB6ibPFNnaoPwx9PlsFwaC4QW5uR1xlOx03T8MMXypD9icdzpMyBNAibgrib2aEGOKDheGR13G9ckybE/132">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="XHalso's Blog">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/2018/04/17/微信小程序-使用Promise封装wx-request/" itemprop="url">微信小程序 使用Promise封装wx.request</a></h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">发表于</span>
-              
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-04-17T10:06:33+08:00">
-                2018-04-17
-              </time>
-            
-
-            
-
-            
-          </span>
-
-          
-            <span class="post-category" >
-            
-              <span class="post-meta-divider">|</span>
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">分类于</span>
-              
-              
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/微信小程序/" itemprop="url" rel="index">
-                    <span itemprop="name">微信小程序</span>
-                  </a>
-                </span>
-
-                
-                
-              
-            </span>
-          
-
-          
-            
-          
-
-          
-          
-             <span id="/2018/04/17/微信小程序-使用Promise封装wx-request/" class="leancloud_visitors" data-flag-title="微信小程序 使用Promise封装wx.request">
-               <span class="post-meta-divider">|</span>
-               <span class="post-meta-item-icon">
-                 <i class="fa fa-eye"></i>
-               </span>
-               
-                 <span class="post-meta-item-text">阅读次数&#58;</span>
-               
-                 <span class="leancloud-visitors-count"></span>
-             </span>
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          <h2 id="wx-request"><a href="#wx-request" class="headerlink" title="wx.request"></a>wx.request</h2><p>微信小程序原生的网络请求API</p>
-<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line">wx.request(&#123;</span><br><span class="line">  url: <span class="string">'test.php'</span>, <span class="comment">//仅为示例，并非真实的接口地址</span></span><br><span class="line">  data: &#123;</span><br><span class="line">    x: <span class="string">''</span> ,</span><br><span class="line">    y: <span class="string">''</span></span><br><span class="line">  &#125;,</span><br><span class="line">  header: &#123;</span><br><span class="line">    <span class="string">'content-type'</span>: <span class="string">'application/json'</span> <span class="comment">// 默认值</span></span><br><span class="line">  &#125;,</span><br><span class="line">  success: <span class="function"><span class="keyword">function</span>(<span class="params">res</span>) </span>&#123;</span><br><span class="line">    <span class="built_in">console</span>.log(res.data)</span><br><span class="line">  &#125;</span><br><span class="line">&#125;)</span><br></pre></td></tr></table></figure>
-          <!--noindex-->
-          <div class="post-button text-center">
-            <a class="btn" href="/2018/04/17/微信小程序-使用Promise封装wx-request/#more" rel="contents">
-              阅读全文 &raquo;
-            </a>
-          </div>
-          <!--/noindex-->
-        
-      
-    </div>
-    
-    
-    
-
-    
-
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
   </section>
 
   
+  <nav class="pagination">
+    <span class="page-number current">1</span><a class="page-number" href="/page/2/">2</a><a class="extend next" rel="next" href="/page/2/"><i class="fa fa-angle-right"></i></a>
+  </nav>
+
 
 
           </div>
@@ -1669,7 +1984,7 @@
               
                 <a href="/archives/">
               
-                  <span class="site-state-item-count">8</span>
+                  <span class="site-state-item-count">12</span>
                   <span class="site-state-item-name">日志</span>
                 </a>
               </div>
@@ -1680,7 +1995,7 @@
               
               <div class="site-state-item site-state-categories">
                 <a href="/categories/index.html">
-                  <span class="site-state-item-count">7</span>
+                  <span class="site-state-item-count">8</span>
                   <span class="site-state-item-name">分类</span>
                 </a>
               </div>
@@ -1691,7 +2006,7 @@
               
               <div class="site-state-item site-state-tags">
                 <a href="/tags/index.html">
-                  <span class="site-state-item-count">6</span>
+                  <span class="site-state-item-count">8</span>
                   <span class="site-state-item-name">标签</span>
                 </a>
               </div>
@@ -1745,7 +2060,7 @@
 
     <footer id="footer" class="footer">
       <div class="footer-inner">
-        <div class="copyright">&copy; <span itemprop="copyrightYear">2018</span>
+        <div class="copyright">&copy; <span itemprop="copyrightYear">2019</span>
   <span class="with-love">
     <i class="fa fa-user"></i>
   </span>
