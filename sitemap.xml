@@ -2,6 +2,13 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   
   <url>
+    <loc>http://blog.ivanweb.cn/2019/05/15/%E4%BD%BF%E7%94%A8nuxtjs%E5%AE%9E%E7%8E%B0word%E3%80%81excel%E3%80%81ppt-%E5%92%8C-pdf-%E6%96%87%E4%BB%B6%E5%9C%A8%E7%BA%BF%E9%A2%84%E8%A7%88/</loc>
+    
+    <lastmod>2019-05-15T07:41:15.933Z</lastmod>
+    
+  </url>
+  
+  <url>
     <loc>http://blog.ivanweb.cn/2019/05/08/%E5%AE%A2%E6%88%B7%E7%AB%AF%E4%BD%BF%E7%94%A8%E4%B8%83%E7%89%9B%E4%BA%91%E4%B8%8A%E4%BC%A0%E6%96%87%E4%BB%B6/</loc>
     
     <lastmod>2019-05-08T09:43:52.814Z</lastmod>
@@ -65,14 +72,14 @@
   </url>
   
   <url>
-    <loc>http://blog.ivanweb.cn/2018/04/18/Mac-%E9%80%9A%E8%BF%87brew%E5%AE%89%E8%A3%85%E6%8C%87%E5%AE%9A%E7%89%88%E6%9C%AC%E7%9A%84node/</loc>
+    <loc>http://blog.ivanweb.cn/2018/04/18/Mac-%E7%A8%8B%E5%BA%8F%E7%8C%BF%E8%BD%AF%E4%BB%B6%E6%8E%A8%E8%8D%90%E4%B8%80%E6%B3%A2/</loc>
     
     <lastmod>2018-04-18T15:01:51.000Z</lastmod>
     
   </url>
   
   <url>
-    <loc>http://blog.ivanweb.cn/2018/04/18/Mac-%E7%A8%8B%E5%BA%8F%E7%8C%BF%E8%BD%AF%E4%BB%B6%E6%8E%A8%E8%8D%90%E4%B8%80%E6%B3%A2/</loc>
+    <loc>http://blog.ivanweb.cn/2018/04/18/Mac-%E9%80%9A%E8%BF%87brew%E5%AE%89%E8%A3%85%E6%8C%87%E5%AE%9A%E7%89%88%E6%9C%AC%E7%9A%84node/</loc>
     
     <lastmod>2018-04-18T15:01:51.000Z</lastmod>
     
